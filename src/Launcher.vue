@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="showLauncher" class="sc-launcher" :class="{opened: isOpen}" @click.prevent="isOpen ? close() : openAndFocus()" :style="{backgroundColor: colors.launcher.bg}">
+    <slot v-if="showLauncher" name="launcher" :click="onLauncherClick" :opened="isOpen" :newMessageCount="newMessagesCount" />
+    <div v-else-if="showLauncher && !hasLauncherSlot" class="sc-launcher" :class="{opened: isOpen}" @click.prevent="onLauncherClick" :style="{backgroundColor: colors.launcher.bg}">
       <div v-if="newMessagesCount > 0 && !isOpen" class="sc-new-messsages-count">
         {{newMessagesCount}}
       </div>
@@ -198,10 +199,13 @@ export default {
     },
   },
   methods: {
+    onLauncherClick() {
+      this.isOpen ? this.close() : this.openAndFocus()
+    },
     openAndFocus() {
       this.open();
       this.$root.$emit('focusUserInput');
-    }
+    },
   },
   computed: {
     chatWindowTitle() {
@@ -216,6 +220,9 @@ export default {
       } else {
         return 'You & ' + this.participants[0].name
       }
+    },
+    hasLauncherSlot() {
+      return !!this.$scopedSlots.launcher
     }
   },
   components: {
