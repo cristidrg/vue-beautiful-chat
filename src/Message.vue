@@ -36,12 +36,17 @@
           <slot name="system-message-body" :message="message.data">
           </slot>
       </SystemMessage>
+      <GridMessage v-else-if="message.type === 'grid'" :data="message.data" :messageColors="determineMessageColors()">
+          <slot name="grid-message-body" :message="message.data">
+          </slot>
+      </GridMessage>
     </div>
   </div>
 </template>
 
 <script>
 import TextMessage from './messages/TextMessage.vue'
+import GridMessage from './messages/GridMessage.vue'
 import FileMessage from './messages/FileMessage.vue'
 import EmojiMessage from './messages/EmojiMessage.vue'
 import TypingMessage from './messages/TypingMessage.vue'
@@ -58,6 +63,7 @@ export default {
   components: {
     TextMessage,
     FileMessage,
+    GridMessage,
     EmojiMessage,
     TypingMessage,
     SystemMessage

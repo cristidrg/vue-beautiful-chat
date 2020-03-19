@@ -1,7 +1,7 @@
 <template>
   <div>
-    <slot v-if="showLauncher" name="launcher" :click="onLauncherClick" :opened="isOpen" :newMessageCount="newMessagesCount" />
-    <div v-else-if="showLauncher && !hasLauncherSlot" class="sc-launcher" :class="{opened: isOpen}" @click.prevent="onLauncherClick" :style="{backgroundColor: colors.launcher.bg}">
+    <slot v-if="showLauncher && hasLauncherSlot" name="launcher" :click="onLauncherClick" :opened="isOpen" :newMessageCount="newMessagesCount" />
+    <div v-else-if="showLauncher" class="sc-launcher" :class="{opened: isOpen}" @click.prevent="onLauncherClick" :style="{backgroundColor: colors.launcher.bg}">
       <div v-if="newMessagesCount > 0 && !isOpen" class="sc-new-messsages-count">
         {{newMessagesCount}}
       </div>
