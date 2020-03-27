@@ -124,6 +124,7 @@ export default {
       this.file = null
     },
     setInputActive (onoff) {
+      this.$emit('onTypeBlur')
       this.inputActive = onoff
     },
     handleKey (event) {

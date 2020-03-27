@@ -28,6 +28,7 @@
       :disableUserListToggle="disableUserListToggle"
       @scrollToTop="$emit('scrollToTop')"
       @onType="$emit('onType')"
+      @onTypeBlur="$emit('onTypeBlur')"
       @edit="$emit('edit', $event)"
       @remove="$emit('remove', $event)"
     >
