@@ -1,5 +1,5 @@
 <template>
-  <div class="sc-message--text" :style="messageColors">
+  <div :class='`sc-message--text ${messageClass ? messageClass : ""}`' :style="messageColors">
     <template>
       <div class="sc-message--toolbox" :style="{background: messageColors.backgroundColor}">
         <button v-if="me && message.id != null && message.id != undefined" @click="edit" :disabled="isEditing">
@@ -44,6 +44,10 @@ export default {
     }
   },
   props: {
+    messageClass: {
+      type: String,
+      required: false
+    },
     message:{
       type: Object,
       required: true

@@ -34,7 +34,7 @@
         </slot>
       </template>
       <template v-slot:text-message-body="scopedProps">
-        <slot name="text-message-body" :message="scopedProps.message" :messageText="scopedProps.messageText" :messageColors="scopedProps.messageColors" :me="scopedProps.me">
+        <slot name="text-message-body" :message="scopedProps.message" :messageClass="scopedProps.messageClass" :messageText="scopedProps.messageText" :messageColors="scopedProps.messageColors" :me="scopedProps.me">
         </slot>
       </template>
       <template v-slot:system-message-body="scopedProps">
