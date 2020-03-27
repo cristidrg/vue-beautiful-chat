@@ -1,5 +1,5 @@
 <template>
-  <div :class='`sc-message--text bleach-color-${Math.floor(Math.random() * 20) + 1}`' :style="messageColors">
+  <div :class='`sc-message--text bleach-color-${message.id % 20 + 1}`' :style="messageColors">
     <template>
       <div class="sc-message--toolbox" :style="{background: messageColors.backgroundColor}">
         <button v-if="me && message.id != null && message.id != undefined" @click="edit" :disabled="isEditing">
